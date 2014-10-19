@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  rest: 1.5
+  required: 1.5
+  unit_id: 1
+  category_id: 1
+
+two:
+  title: MyString
+  rest: 1.5
+  required: 1.5
+  unit_id: 1
+  category_id: 1
