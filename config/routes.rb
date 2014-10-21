@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'products#index'
 
+  devise_scope :user do
+    get "/auth/:provider/callback" => "authentications#create"
+  end
+  match "/signout" => "authentications#destroy", :as => :signout, :via => [:get, :post]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,0 +1,21 @@
+defaults: &defaults
+  trello:
+    key:
+    secret:
+
+  facebook:
+    key:
+    secret:
+
+  vkontakte:
+    key:
+    secret:
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+test:
+  <<: *defaults

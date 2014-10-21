@@ -8,6 +8,19 @@
 </head>
 <body>
 
+<div id="user_nav">
+  <% if current_user %>
+    Welcome, <%= current_user.name %>!
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sing up", new_user_registration_path %>
+    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Sign in with Trello", "/auth/trello" %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+    <%= link_to "Sign in with Vkontakte", "/auth/vkontakte" %>
+  <% end %>
+</div>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 

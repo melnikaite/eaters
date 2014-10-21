@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use mysql2 as the database for Active Record
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -38,6 +38,13 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'byebug', group: [:development, :test]
 
 gem 'devise'
+
+gem 'ruby-trello', require: 'trello'
+gem 'omniauth-trello'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
+
+gem 'settingslogic'
