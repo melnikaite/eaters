@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020215816) do
+ActiveRecord::Schema.define(version: 20141021162533) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "integrations", force: true do |t|
+    t.string   "provider"
+    t.text     "details"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -50,6 +58,24 @@ ActiveRecord::Schema.define(version: 20141020215816) do
 
   create_table "recipes", force: true do |t|
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shopping_list_items", force: true do |t|
+    t.integer  "shopping_list_id"
+    t.integer  "product_id"
+    t.integer  "unit_id"
+    t.integer  "required"
+    t.boolean  "done",             default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shopping_lists", force: true do |t|
+    t.string   "title"
+    t.text     "integration_details"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

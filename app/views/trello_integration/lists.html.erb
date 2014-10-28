@@ -1,0 +1,5 @@
+Please select a list:
+<%= form_tag trello_integration_index_path do %>
+  <%= select_tag :list_id, options_from_collection_for_select(@lists, :id, :name) %>
+  <%= submit_tag 'Save' %>
+<%- end %>
