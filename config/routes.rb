@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  resources :recipes
   resources :products
   resources :categories
-  resources :units
+  resources :recipes do
+    resources :products_recipes, only: [:index, :new, :create, :destroy]
+  end
   resources :trello_integration, only: :create do
     collection do
       get :boards
       post :lists
     end
   end
+  resources :units
 
   root 'products#index'
 

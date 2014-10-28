@@ -25,11 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :unit_id %><br>
-    <%= f.number_field :unit_id %>
+    <%= f.collection_select :unit_id, Unit.all, :id, :title %>
   </div>
   <div class="field">
     <%= f.label :category_id %><br>
-    <%= f.number_field :category_id %>
+    <%= f.collection_select :category_id, current_user.categories, :id, :title, prompt: '' %>
   </div>
   <div class="actions">
     <%= f.submit %>
