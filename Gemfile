@@ -37,9 +37,6 @@ gem 'spring',        group: :development
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-gem 'byebug', group: [:development, :test]
-
 gem 'devise'
 
 gem 'ruby-trello', require: 'trello'
@@ -51,3 +48,13 @@ gem 'settingslogic'
 
 gem 'html2slim'
 gem 'slim-rails'
+
+group :test do
+  gem 'database_cleaner'
+end
+
+group :development, :test do
+  gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
