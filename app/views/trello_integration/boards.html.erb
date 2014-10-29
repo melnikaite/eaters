@@ -1,5 +1,0 @@
-Please select a board:
-<%= form_tag lists_trello_integration_index_path do %>
-  <%= select_tag :board_id, options_from_collection_for_select(@boards, :id, :name) %>
-  <%= submit_tag 'Save' %>
-<%- end %>

@@ -48,3 +48,6 @@ gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 
 gem 'settingslogic'
+
+gem 'html2slim'
+gem 'slim-rails'

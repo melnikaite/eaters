@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title Жраки
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    #user_nav
+      - if current_user
+        | Welcome,
+        = current_user.name
+        | ! 
+        = link_to "Products", products_path
+        = link_to "Categories", categories_path
+        = link_to "Recipes", recipes_path
+        = link_to "Integrations", integrations_path
+        = link_to "Shopping lists", shopping_lists_path
+        = link_to "Profile", edit_user_registration_path
+        = link_to "Sign Out", destroy_user_session_path, method: :delete
+      - else
+        = link_to "Sing up", new_user_registration_path
+        = link_to "Sign in", new_user_session_path
+        = link_to "Sign in with Trello", "/auth/trello"
+        = link_to "Sign in with Facebook", "/auth/facebook"
+        = link_to "Sign in with Vkontakte", "/auth/vkontakte"
+    p.notice
+      = notice
+    p.alert
+      = alert
+    = yield

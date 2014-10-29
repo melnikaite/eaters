@@ -1,0 +1,17 @@
+h1 Listing products
+table
+  thead
+    tr
+      th Title
+      th Required
+      th Unit
+      th
+  tbody
+    - @products_recipes.each do |products_recipe|
+      tr
+        td= products_recipe.product.title
+        td= products_recipe.required
+        td= products_recipe.unit.title
+        td= link_to 'Destroy', recipe_products_recipe_path(products_recipe.recipe_id, products_recipe.product_id), method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Product', new_recipe_products_recipe_path

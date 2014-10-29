@@ -1,0 +1,24 @@
+= form_for(@products_recipe, url: recipe_products_recipes_path) do |f|
+  - if @products_recipe.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@products_recipe.errors.count, "error")
+        |  prohibited this recipe from being saved:
+      ul
+        - @products_recipe.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = f.label :product_id
+    br
+    = f.collection_select :product_id, current_user.products, :id, :title
+  .field
+    = f.label :required
+    br
+    = f.text_field :required
+  .field
+    = f.label :unit_id
+    br
+    = f.collection_select :unit_id, Unit.all, :id, :title
+  .actions
+    = f.submit
