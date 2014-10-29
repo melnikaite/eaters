@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :products_recipes, only: [:index, :new, :create, :destroy]
   end
+  resources :integrations
   resources :trello_integration, only: :create do
     collection do
       get :boards
