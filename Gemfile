@@ -49,6 +49,8 @@ gem 'settingslogic'
 gem 'html2slim'
 gem 'slim-rails'
 
+gem 'bootstrap-editable-rails'
+
 group :test do
   gem 'database_cleaner'
 end

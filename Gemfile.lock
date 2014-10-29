@@ -32,6 +32,8 @@ GEM
     autoprefixer-rails (3.1.2.20141016)
       execjs
     bcrypt (3.1.7)
+    bootstrap-editable-rails (0.0.7)
+      railties (>= 3.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
@@ -215,6 +217,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  bootstrap-editable-rails
   bootstrap-sass (~> 3.2.0)
   byebug
   coffee-rails (~> 4.0.0)

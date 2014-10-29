@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :shopping_lists do
     resources :shopping_list_items, except: :show
   end
+  resources :units, only: :index
 
   root 'products#index'
 

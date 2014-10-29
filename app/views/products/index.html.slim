@@ -1,5 +1,5 @@
 h1 Listing products
-table
+table.table
   thead
     tr
       th Title
@@ -11,13 +11,12 @@ table
   tbody
     - @products.each do |product|
       tr
-        td= product.title
-        td= product.rest
-        td= product.required
-        td= product.unit.title
-        td= product.category.try(:title)
-        td= link_to 'Show', product
-        td= link_to 'Edit', edit_product_path(product)
-        td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+        td= link_to product.title || 'Select', '#', data: {value: product.title, resource: :product, name: :title, url: product_path(product), 'original-title' => 'Title'}
+        td= link_to product.rest || 0, '#', class: :float, data: {value: product.rest, resource: :product, name: :rest, url: product_path(product), 'original-title' => 'Rest'}
+        td= link_to product.required || 0, '#', class: :float, data: {value: product.required, resource: :product, name: :required, url: product_path(product), 'original-title' => 'Required'}
+        td= link_to product.unit.try(:title) || 'Select', '#', class: :prepend, data: {type: :select, value: product.unit_id, source: units_path,resource: :product, name: :unit_id, url: product_path(product), 'original-title' => 'Unit'}
+        td= link_to product.category.try(:title) || 'Select', '#', class: :prepend, data: {type: :select, value: product.category_id, source: categories_path, resource: :product, name: :category_id, url: product_path(product), 'original-title' => 'Category'}
+        td= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do
+          span.glyphicon.glyphicon-remove
 br
 = link_to 'New Product', new_product_path
