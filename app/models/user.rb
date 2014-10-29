@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   has_many :categories, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :products_recipes, dependent: :destroy
+  has_many :shopping_lists, dependent: :destroy
+  has_many :shopping_list_items, through: :shopping_lists
 end
