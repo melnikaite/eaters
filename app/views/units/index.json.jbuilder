@@ -1,4 +1,3 @@
 json.array!(@units) do |unit|
-  json.value unit.id
-  json.text unit.title
+  json.extract! unit, :id, :title
 end

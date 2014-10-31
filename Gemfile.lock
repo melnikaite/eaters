@@ -32,8 +32,6 @@ GEM
     autoprefixer-rails (3.1.2.20141016)
       execjs
     bcrypt (3.1.7)
-    bootstrap-editable-rails (0.0.7)
-      railties (>= 3.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
@@ -80,6 +78,9 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-validation-rails (1.12.0)
+      railties (>= 3.2, < 5.0)
+      thor (~> 0.14)
     json (1.8.1)
     jwt (1.0.0)
     mail (2.6.1)
@@ -178,6 +179,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    select2-rails (3.5.9.1)
+      thor (~> 0.14)
     settingslogic (2.0.9)
     slim (2.1.0)
       temple (~> 0.6.9)
@@ -217,7 +220,6 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  bootstrap-editable-rails
   bootstrap-sass (~> 3.2.0)
   byebug
   coffee-rails (~> 4.0.0)
@@ -227,6 +229,7 @@ DEPENDENCIES
   html2slim
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-validation-rails
   mysql2
   omniauth-facebook
   omniauth-trello
@@ -236,6 +239,7 @@ DEPENDENCIES
   ruby-trello
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  select2-rails
   settingslogic
   slim-rails
   spring

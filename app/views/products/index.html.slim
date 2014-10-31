@@ -1,22 +1,30 @@
 h1 Listing products
-table.table
-  thead
-    tr
-      th Title
-      th Rest
-      th Required
-      th Unit
-      th Category
-      th[colspan="3"]
-  tbody
-    - @products.each do |product|
-      tr
-        td= link_to product.title || 'Select', '#', data: {value: product.title, resource: :product, name: :title, url: product_path(product), 'original-title' => 'Title'}
-        td= link_to product.rest || 0, '#', class: :float, data: {value: product.rest, resource: :product, name: :rest, url: product_path(product), 'original-title' => 'Rest'}
-        td= link_to product.required || 0, '#', class: :float, data: {value: product.required, resource: :product, name: :required, url: product_path(product), 'original-title' => 'Required'}
-        td= link_to product.unit.try(:title) || 'Select', '#', class: :prepend, data: {type: :select, value: product.unit_id, source: units_path,resource: :product, name: :unit_id, url: product_path(product), 'original-title' => 'Unit'}
-        td= link_to product.category.try(:title) || 'Select', '#', class: :prepend, data: {type: :select, value: product.category_id, source: categories_path, resource: :product, name: :category_id, url: product_path(product), 'original-title' => 'Category'}
-        td= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do
-          span.glyphicon.glyphicon-remove
-br
-= link_to 'New Product', new_product_path
+
+.row.form-group
+  .col-sm-4 Title
+  .col-sm-1 Rest
+  .col-sm-1 Required
+  .col-sm-1 Unit
+  .col-sm-4 Category
+  .col-sm-1 &nbsp;
+
+- @products.each do |product|
+  .row id=("product-#{product.id}")
+    = form_for product, remote: true, html: {autocomplete: :off} do |f|
+      .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
+      .col-sm-1.form-group= f.text_field :rest, number: true, class: 'form-control', id: ''
+      .col-sm-1.form-group= f.text_field :required, number: true, class: 'form-control', id: ''
+      .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path, value: product.unit ? {id: product.unit.try(:id), text: product.unit.try(:title)} : nil}, id: ''
+      .col-sm-4.form-group= f.text_field :category_id, data: {source: categories_path, value: product.category ? {id: product.category.try(:id), text: product.category.try(:title)} : nil}, id: ''
+      .col-sm-1= link_to product, method: :delete, remote: true do
+        span.glyphicon.glyphicon-remove
+
+.row
+  = form_for Product.new, remote: true, html: {autocomplete: :off} do |f|
+    .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
+    .col-sm-1.form-group= f.text_field :rest, number: true, class: 'form-control', id: ''
+    .col-sm-1.form-group= f.text_field :required, number: true, class: 'form-control', id: ''
+    .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path}, id: ''
+    .col-sm-4.form-group= f.text_field :category_id, data: {source: categories_path}, id: ''
+    .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
+      span.glyphicon.glyphicon-remove

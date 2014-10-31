@@ -49,7 +49,8 @@ gem 'settingslogic'
 gem 'html2slim'
 gem 'slim-rails'
 
-gem 'bootstrap-editable-rails'
+gem 'select2-rails'
+gem 'jquery-validation-rails'
 
 group :test do
   gem 'database_cleaner'
