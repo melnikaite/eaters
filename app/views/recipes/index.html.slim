@@ -1,15 +1,24 @@
 h1 Listing recipes
-table.table
-  thead
-    tr
-      th Title
-      th[colspan="3"]
-  tbody
-    - @recipes.each do |recipe|
-      tr
-        td= recipe.title
-        td= link_to 'Show', recipe
-        td= link_to 'Edit', edit_recipe_path(recipe)
-        td= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }
-br
-= link_to 'New Recipe', new_recipe_path
+
+.row.form-group
+  .col-sm-4 Title
+  .col-sm-1 &nbsp;
+
+- @recipes.each do |recipe|
+  .row id=("recipe-#{recipe.id}")
+    = form_for recipe, remote: true, html: {autocomplete: :off} do |f|
+      .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
+      .col-sm-1
+        = link_to recipe_products_recipes_path(recipe) do
+          span.glyphicon.glyphicon-edit
+        = link_to recipe, method: :delete, remote: true do
+          span.glyphicon.glyphicon-remove
+
+.row
+  = form_for Recipe.new, remote: true, html: {autocomplete: :off} do |f|
+    .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
+    .col-sm-1
+      = link_to '#', class: 'hide' do
+        span.glyphicon.glyphicon-edit
+      = link_to '#', method: :delete, remote: true, class: 'hide' do
+        span.glyphicon.glyphicon-remove

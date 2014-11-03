@@ -6,5 +6,12 @@ form.attr('action', '<%= category_path(@category) %>')
 form.attr('method', 'put')
 form.data('waiting-response', false)
 if row.siblings('.row').not('[id]').length == 1
-  row.clone().appendTo(row.parent()).find('input').val('')
-@validate form
+  newRow = row.clone().appendTo(row.parent())
+  newRow.find('.select2-container').remove()
+  newRow.find('input').val('')
+  $.each newRow.find('[data-source]'), ->
+    initSelect2 $(this)
+  newRow.removeAttr('id')
+  newForm = newRow.find('form')
+  newForm.attr('action', '<%= categories_path %>')
+  newForm.attr('method', 'post')

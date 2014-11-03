@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :products, only: [:index, :update, :create, :destroy]
   resources :categories, only: [:index, :update, :create, :destroy]
-  resources :recipes do
-    resources :products_recipes, only: [:index, :new, :create, :destroy]
+  resources :recipes, only: [:index, :update, :create, :destroy] do
+    resources :products_recipes, only: [:index, :create, :destroy, :update]
   end
   resources :integrations
   resources :trello_integration, only: :create do

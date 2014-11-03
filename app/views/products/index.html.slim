@@ -14,8 +14,8 @@ h1 Listing products
       .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
       .col-sm-1.form-group= f.text_field :rest, number: true, class: 'form-control', id: ''
       .col-sm-1.form-group= f.text_field :required, number: true, class: 'form-control', id: ''
-      .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path, value: product.unit ? {id: product.unit.try(:id), text: product.unit.try(:title)} : nil}, id: ''
-      .col-sm-4.form-group= f.text_field :category_id, data: {source: categories_path, value: product.category ? {id: product.category.try(:id), text: product.category.try(:title)} : nil}, id: ''
+      .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path, value: product.unit ? {id: product.unit.id, text: product.unit.title} : nil}, id: ''
+      .col-sm-4.form-group= f.text_field :category_id, data: {source: categories_path, value: product.category ? {id: product.category.id, text: product.category.title} : nil}, id: ''
       .col-sm-1= link_to product, method: :delete, remote: true do
         span.glyphicon.glyphicon-remove
 

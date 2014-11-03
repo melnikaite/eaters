@@ -1,5 +1,26 @@
 @timeouts = {}
 
+@initSelect2 = (input) ->
+  url = input.data('source')
+  input.select2
+    initSelection: (element, callback) ->
+      callback $(element).data('value') if $(element).data('value')
+    ajax:
+      url: url
+      dataType: 'json'
+      quietMillis: 100
+      results: (data) ->
+        $.each data, (id, option) ->
+          data[id] =
+            id: option.id
+            text: option.title
+        results: data
+        more: false
+      cache: true
+    allowClear: true
+    placeholder: ' '
+    width: '100%'
+
 $(document).on 'ready page:load', ->
   $(document).on 'keyup change', 'input', (e) ->
     form = $(this).closest('form')
@@ -20,11 +41,6 @@ $(document).on 'ready page:load', ->
         form.data('waiting-response', (new Date()).getTime())
         form.submit()
 
-  $(document).on 'keyup', '.form-group input:first-child', (e) ->
-    row = $(this).closest('.row')
-    if $.trim($(this).val()) && row.siblings('.row').not('[id]').length == 1
-      row.clone().appendTo(row.parent()).find('input').val('')
-
   @validate = (form) ->
     form.validate
       highlight: (element) ->
@@ -34,21 +50,4 @@ $(document).on 'ready page:load', ->
   @validate $('form')
 
   $.each $('[data-source]'), ->
-    url = $(this).data('source')
-    $(this).select2
-      initSelection: (element, callback) ->
-        callback $(element).data('value') if $(element).data('value')
-      ajax:
-        url: url
-        dataType: 'json'
-        quietMillis: 100
-        results: (data) ->
-          $.each data, (id, option) ->
-            data[id] =
-              id: option.id
-              text: option.title
-          results: data
-          more: false
-      allowClear: true
-      placeholder: ' '
-      width: '100%'
+    initSelect2($(this))
