@@ -1,5 +1,6 @@
 @timeouts = {}
-$(document).ready ->
+
+$(document).on 'ready page:load', ->
   $(document).on 'keyup change', 'input', (e) ->
     form = $(this).closest('form')
     handleSubmit(form)
