@@ -1,26 +1,36 @@
 h1=@recipe.title
 
-.row.form-group.hidden-xs
-  .col-sm-4 Title
-  .col-sm-1 Required
-  .col-sm-1 Unit
-  .col-sm-1 &nbsp;
+.products_recipes
+  .row.form-group.hidden-xs
+    .col-sm-1 &nbsp;
+    .col-sm-4 Title
+    .col-sm-1 Required
+    .col-sm-1 Unit
+    .col-sm-1 &nbsp;
 
--@products_recipes.each do |products_recipe|
-    .row id=("products_recipe-#{products_recipe.id}")
-      = form_for products_recipe, url: recipe_products_recipe_path(@recipe.id, products_recipe.id), remote: true, html: {autocomplete: :off} do |f|
-        .col-sm-4.form-group= f.text_field :product_id, required: true, data: {source: products_path, value: products_recipe.product ? {id: products_recipe.product.id, text: products_recipe.product.title} : nil}, id: ''
-        .col-sm-1.form-group= f.text_field :required, number: true, class: 'form-control', id: ''
-        .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path, value: products_recipe.unit ? {id: products_recipe.unit.id, text: products_recipe.unit.title} : nil}, id: ''
-        .col-sm-1= link_to recipe_products_recipe_path(products_recipe.recipe_id, products_recipe.id), method: :delete, remote: true do
-          span.glyphicon.glyphicon-remove
-          .visible-xs-inline Remove
+  -@products_recipes.each do |products_recipe|
+      .row id=("products_recipe-#{products_recipe.id}")
+        = form_for products_recipe, url: recipe_products_recipe_path(@recipe.id, products_recipe.id), remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
+          .col-sm-1= check_box_tag :add_to_shopping_list, products_recipe.product_id, false, {class: 'checkbox-inline', id: ''}
+          .col-sm-4.form-group= f.text_field :product_id, required: true, data: {source: products_path, value: products_recipe.product ? {id: products_recipe.product.id, text: products_recipe.product.title} : nil}, id: ''
+          .col-sm-1.form-group= f.text_field :required, number: true, class: 'form-control', id: ''
+          .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path, value: products_recipe.unit ? {id: products_recipe.unit.id, text: products_recipe.unit.title} : nil}, id: ''
+          .col-sm-1= link_to recipe_products_recipe_path(products_recipe.recipe_id, products_recipe.id), method: :delete, remote: true do
+            span.glyphicon.glyphicon-remove
+            .visible-xs-inline Remove
+
+  .row
+    = form_for :products_recipe, url: recipe_products_recipes_path(@recipe.id), remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
+      .col-sm-1= check_box_tag :add_to_shopping_list, nil, false, {class: 'checkbox-inline hide', id: ''}
+      .col-sm-4.form-group= f.text_field :product_id, required: true, data: {source: products_path}, id: ''
+      .col-sm-1.form-group= f.text_field :required, number: true, class: 'form-control', id: ''
+      .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path}, id: ''
+      .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
+        span.glyphicon.glyphicon-remove
+        .visible-xs-inline Remove
 
 .row
-  = form_for :products_recipe, url: recipe_products_recipes_path(@recipe.id), remote: true, html: {autocomplete: :off} do |f|
-    .col-sm-4.form-group= f.text_field :product_id, required: true, data: {source: products_path}, id: ''
-    .col-sm-1.form-group= f.text_field :required, number: true, class: 'form-control', id: ''
-    .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path}, id: ''
-    .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
-      span.glyphicon.glyphicon-remove
-      .visible-xs-inline Remove
+  .col-sm-2
+    = form_tag '/', method: :post
+      | Add selected to
+      = text_field_tag :shopping_list_id, nil, data: {source: shopping_lists_path}, id: '', placeholder: 'Shopping list'

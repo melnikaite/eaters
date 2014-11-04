@@ -6,14 +6,14 @@ h1 Listing categories
 
 - @categories.each do |category|
   .row id=("category-#{category.id}")
-    = form_for category, remote: true, html: {autocomplete: :off} do |f|
+    = form_for category, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
       .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
       .col-sm-1= link_to category, method: :delete, remote: true do
         span.glyphicon.glyphicon-remove
         .visible-xs-inline Remove
 
 .row
-  = form_for Category.new, remote: true, html: {autocomplete: :off} do |f|
+  = form_for Category.new, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
     .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
     .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
       span.glyphicon.glyphicon-remove

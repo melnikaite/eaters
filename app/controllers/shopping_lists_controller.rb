@@ -2,6 +2,7 @@ class ShoppingListsController < ApplicationController
   before_action :set_shopping_list, only: [:update, :destroy]
 
   # GET /shopping_lists
+  # GET /shopping_lists.json
   def index
     @shopping_lists = current_user.shopping_lists
   end

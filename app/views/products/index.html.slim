@@ -1,32 +1,42 @@
 h1 Listing products
 
-.row.form-group.hidden-xs
-  .col-sm-2 Title
-  .col-sm-2 Rest
-  .col-sm-2 Required
-  .col-sm-2 Unit
-  .col-sm-3 Category
-  .col-sm-1 &nbsp;
+.products
+  .row.form-group.hidden-xs
+    .col-sm-1 &nbsp;
+    .col-sm-2 Title
+    .col-sm-2 Rest
+    .col-sm-2 Required
+    .col-sm-2 Unit
+    .col-sm-2 Category
+    .col-sm-1 &nbsp;
 
-- @products.each do |product|
-  .row id=("product-#{product.id}")
-    = form_for product, remote: true, html: {autocomplete: :off} do |f|
+  - @products.each do |product|
+    .row id=("product-#{product.id}")
+      = form_for product, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
+        .col-sm-1= check_box_tag :add_to_shopping_list, product.id, false, {class: 'checkbox-inline', id: ''}
+        .col-sm-2.form-group= f.text_field :title, required: true, class: 'form-control', id: '', placeholder: 'Title'
+        .col-sm-2.form-group= f.text_field :rest, number: true, class: 'form-control', id: '', placeholder: '0.0'
+        .col-sm-2.form-group= f.text_field :required, number: true, class: 'form-control', id: '', placeholder: '0.0'
+        .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path, value: product.unit ? {id: product.unit.id, text: product.unit.title} : nil}, id: '', placeholder: 'Unit'
+        .col-sm-2.form-group= f.text_field :category_id, data: {source: categories_path, value: product.category ? {id: product.category.id, text: product.category.title} : nil}, id: '', placeholder: 'Category'
+        .col-sm-1= link_to product, method: :delete, remote: true do
+          span.glyphicon.glyphicon-remove
+          .visible-xs-inline Remove
+
+  .row
+    = form_for Product.new, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
+      .col-sm-1= check_box_tag :add_to_shopping_list, nil, false, {class: 'checkbox-inline hide', id: ''}
       .col-sm-2.form-group= f.text_field :title, required: true, class: 'form-control', id: '', placeholder: 'Title'
       .col-sm-2.form-group= f.text_field :rest, number: true, class: 'form-control', id: '', placeholder: '0.0'
       .col-sm-2.form-group= f.text_field :required, number: true, class: 'form-control', id: '', placeholder: '0.0'
-      .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path, value: product.unit ? {id: product.unit.id, text: product.unit.title} : nil}, id: '', placeholder: 'Unit'
-      .col-sm-3.form-group= f.text_field :category_id, data: {source: categories_path, value: product.category ? {id: product.category.id, text: product.category.title} : nil}, id: '', placeholder: 'Category'
-      .col-sm-1= link_to product, method: :delete, remote: true do
+      .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path}, id: '', placeholder: 'Unit'
+      .col-sm-2.form-group= f.text_field :category_id, data: {source: categories_path}, id: '', placeholder: 'Category'
+      .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
         span.glyphicon.glyphicon-remove
         .visible-xs-inline Remove
 
 .row
-  = form_for Product.new, remote: true, html: {autocomplete: :off} do |f|
-    .col-sm-2.form-group= f.text_field :title, required: true, class: 'form-control', id: '', placeholder: 'Title'
-    .col-sm-2.form-group= f.text_field :rest, number: true, class: 'form-control', id: '', placeholder: '0.0'
-    .col-sm-2.form-group= f.text_field :required, number: true, class: 'form-control', id: '', placeholder: '0.0'
-    .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path}, id: '', placeholder: 'Unit'
-    .col-sm-3.form-group= f.text_field :category_id, data: {source: categories_path}, id: '', placeholder: 'Category'
-    .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
-      span.glyphicon.glyphicon-remove
-      .visible-xs-inline Remove
+  .col-sm-2
+    = form_tag '/', method: :post
+      | Add selected to
+      = text_field_tag :shopping_list_id, nil, data: {source: shopping_lists_path}, id: '', placeholder: 'Shopping list'

@@ -6,7 +6,7 @@ h1 Shopping lists
 
 - @shopping_lists.each do |shopping_list|
   .row id=("shopping_list-#{shopping_list.id}")
-    = form_for shopping_list, remote: true, html: {autocomplete: :off} do |f|
+    = form_for shopping_list, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
       .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
       .col-sm-1
         = link_to shopping_list_shopping_list_items_path(shopping_list) do
@@ -17,7 +17,7 @@ h1 Shopping lists
           .visible-xs-inline Remove
 
 .row
-  = form_for ShoppingList.new, remote: true, html: {autocomplete: :off} do |f|
+  = form_for ShoppingList.new, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
     .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
     .col-sm-1
       = link_to '#', class: 'hide' do

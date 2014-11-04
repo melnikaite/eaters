@@ -9,7 +9,7 @@ class ShoppingListItemsController < ApplicationController
 
   # POST /shopping_lists/1/shopping_list_items.json
   def create
-    @shopping_list_item = @shopping_list.shopping_list_items.create(shopping_list_params.merge(shopping_list_id: @shopping_list.id))
+    @shopping_list_item = @shopping_list.shopping_list_items.create(shopping_list_params)
   end
 
   # PATCH/PUT /shopping_lists/1/shopping_list_items/1.json
@@ -34,6 +34,8 @@ class ShoppingListItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shopping_list_params
-      params.require(:shopping_list_item).permit(:product_id, :required, :unit_id, :done)
+      items = params.require(:shopping_list_item)
+      items = items.values if items.keys.first == '0'
+      ActionController::Parameters.new(shopping_list_item: items).permit(shopping_list_item: [:product_id, :required, :unit_id, :done]).require(:shopping_list_item)
     end
 end

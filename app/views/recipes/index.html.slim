@@ -6,7 +6,7 @@ h1 Listing recipes
 
 - @recipes.each do |recipe|
   .row id=("recipe-#{recipe.id}")
-    = form_for recipe, remote: true, html: {autocomplete: :off} do |f|
+    = form_for recipe, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
       .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
       .col-sm-1
         = link_to recipe_products_recipes_path(recipe) do
@@ -17,7 +17,7 @@ h1 Listing recipes
           .visible-xs-inline Remove
 
 .row
-  = form_for Recipe.new, remote: true, html: {autocomplete: :off} do |f|
+  = form_for Recipe.new, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
     .col-sm-4.form-group= f.text_field :title, required: true, class: 'form-control', id: ''
     .col-sm-1
       = link_to '#', class: 'hide' do
