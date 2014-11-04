@@ -11,8 +11,10 @@ h1 Listing recipes
       .col-sm-1
         = link_to recipe_products_recipes_path(recipe) do
           span.glyphicon.glyphicon-edit
+          .visible-xs-inline Open
         = link_to recipe, method: :delete, remote: true do
           span.glyphicon.glyphicon-remove
+          .visible-xs-inline Remove
 
 .row
   = form_for Recipe.new, remote: true, html: {autocomplete: :off} do |f|
@@ -20,5 +22,7 @@ h1 Listing recipes
     .col-sm-1
       = link_to '#', class: 'hide' do
         span.glyphicon.glyphicon-edit
+        .visible-xs-inline Open
       = link_to '#', method: :delete, remote: true, class: 'hide' do
         span.glyphicon.glyphicon-remove
+        .visible-xs-inline Remove

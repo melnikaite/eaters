@@ -14,6 +14,7 @@ h1=@recipe.title
         .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path, value: products_recipe.unit ? {id: products_recipe.unit.id, text: products_recipe.unit.title} : nil}, id: ''
         .col-sm-1= link_to recipe_products_recipe_path(products_recipe.recipe_id, products_recipe.id), method: :delete, remote: true do
           span.glyphicon.glyphicon-remove
+          .visible-xs-inline Remove
 
 .row
   = form_for :products_recipe, url: recipe_products_recipes_path(@recipe.id), remote: true, html: {autocomplete: :off} do |f|
@@ -22,3 +23,4 @@ h1=@recipe.title
     .col-sm-1.form-group= f.text_field :unit_id, data: {source: units_path}, id: ''
     .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
       span.glyphicon.glyphicon-remove
+      .visible-xs-inline Remove
