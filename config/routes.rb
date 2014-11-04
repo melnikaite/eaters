@@ -11,8 +11,8 @@ Rails.application.routes.draw do
       post :lists
     end
   end
-  resources :shopping_lists do
-    resources :shopping_list_items, except: :show
+  resources :shopping_lists, only: [:index, :update, :create, :destroy] do
+    resources :shopping_list_items, only: [:index, :create, :destroy, :update]
   end
   resources :units, only: :index
 

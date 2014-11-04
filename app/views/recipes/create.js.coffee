@@ -9,7 +9,8 @@ form.data('waiting-response', false)
 if row.siblings('.row').not('[id]').length == 1
   newRow = row.clone().appendTo(row.parent())
   newRow.find('.select2-container').remove()
-  newRow.find('input').val('')
+  newRow.find('input').not('[type="checkbox"]').val('')
+  newRow.find('input').filter('[type="checkbox"]').attr('checked', false)
   $.each newRow.find('[data-source]'), ->
     initSelect2 $(this)
   newRow.removeAttr('id')

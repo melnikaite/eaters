@@ -36,7 +36,7 @@ $(document).on 'ready page:load', ->
       if id
         @timeouts[id] = setTimeout ->
           handleSubmit(form)
-        , 1000
+        , 50
       else
         form.data('waiting-response', (new Date()).getTime())
         form.submit()

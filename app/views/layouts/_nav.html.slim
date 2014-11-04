@@ -6,12 +6,12 @@ nav.navbar.navbar-default.affix role="navigation"
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="#"  Жраки
+      a.navbar-brand href="/"  Жраки
 
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       - if current_user
         ul.nav.navbar-nav
-          li class=('active' if current_page?(controller: '/products'))
+          li class=('active' if current_page?(controller: '/products') || current_page?('/'))
             = link_to "Products", products_path
           li class=('active' if current_page?(controller: '/categories'))
             = link_to "Categories", categories_path
