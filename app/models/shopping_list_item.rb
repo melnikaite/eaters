@@ -5,7 +5,7 @@ class ShoppingListItem < ActiveRecord::Base
   before_create :update_existing
 
   def title
-    "#{product.title} #{required} #{unit}"
+    "#{product.title} #{required} #{unit.try(:title)}"
   end
 
   def find_existing

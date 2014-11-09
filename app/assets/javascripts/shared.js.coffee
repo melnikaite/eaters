@@ -12,8 +12,8 @@
       results: (data) ->
         $.each data, (id, option) ->
           data[id] =
-            id: option.id
-            text: option.title
+            id: option.id || option.provider
+            text: option.title || option.provider
         results: data
         more: false
       cache: true

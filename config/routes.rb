@@ -15,6 +15,11 @@ Rails.application.routes.draw do
     resources :shopping_list_items, only: [:index, :create, :destroy, :update]
   end
   resources :units, only: :index
+  resources :exports, only: [:create, :index] do
+    collection do
+      delete :destroy
+    end
+  end
 
   root 'products#index'
 

@@ -27,3 +27,16 @@ h1=@shopping_list.title
     .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
       span.glyphicon.glyphicon-remove
       .visible-xs-inline Remove
+
+.row
+  .col-sm-2
+    = form_tag exports_path, method: :delete, class: 'autosubmit'
+      | Remove from
+      = hidden_field_tag :shopping_list_id, @shopping_list.id
+      = text_field_tag :integration_id, nil, required: true, data: {source: exports_path(shopping_list_id: @shopping_list.id)}, id: '', placeholder: 'Integrations'
+
+  .col-sm-2
+    = form_tag exports_path, method: :post, class: 'autosubmit'
+      | Export to
+      = hidden_field_tag :shopping_list_id, @shopping_list.id
+      = text_field_tag :integration_id, nil, required: true, data: {source: integrations_path}, id: '', placeholder: 'Integrations'
