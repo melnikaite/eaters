@@ -10,6 +10,9 @@ class ShoppingListItemsController < ApplicationController
   # POST /shopping_lists/1/shopping_list_items.json
   def create
     @shopping_list_item = @shopping_list.shopping_list_items.create(shopping_list_params)
+    if !@shopping_list_item.is_a?(Array) && !@shopping_list_item.id
+      @shopping_list_item = @shopping_list_item.find_existing
+    end
   end
 
   # PATCH/PUT /shopping_lists/1/shopping_list_items/1.json
