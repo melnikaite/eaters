@@ -21,6 +21,10 @@
     placeholder: ' '
     width: '100%'
 
+@toggleShoppingListId = ->
+  has_checked_items = $('[name="add_to_shopping_list"]:checked').length > 0
+  $('[name="shopping_list_id"]').select2('enable', has_checked_items)
+
 $(document).on 'ready page:load', ->
   $(document).off 'keyup change', 'input'
   $(document).on 'keyup change', 'input', (e) ->
@@ -53,10 +57,20 @@ $(document).on 'ready page:load', ->
   $.each $('[data-source]'), ->
     initSelect2($(this))
 
+  $(document).off 'change', '[name="add_to_shopping_list"]'
+  $(document).on 'change', '[name="add_to_shopping_list"]', ->
+    toggleShoppingListId()
+  toggleShoppingListId()
+
   $(document).off 'change', '[name="shopping_list_id"]'
   $(document).on 'change', '[name="shopping_list_id"]', ->
     data = $.map $('[name="add_to_shopping_list"]:checked'), (checkbox, i) ->
-      {product_id: $(checkbox).val()}
+      form = $(checkbox).closest('form')
+      {
+        product_id: $(checkbox).val(),
+        required: $(form).find('[name="products_recipe[required]"], [name="product[required]"]').val(),
+        unit_id: $(form).find('[name="products_recipe[unit_id]"], [name="product[unit_id]"]').val()
+      }
     $.ajax
       method: 'post'
       url: "/shopping_lists/#{$(this).val()}/shopping_list_items"
