@@ -52,6 +52,11 @@ gem 'slim-rails'
 gem 'select2-rails'
 gem 'jquery-validation-rails'
 
+gem 'capistrano'
+gem 'capistrano-rvm'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+
 group :test do
   gem 'database_cleaner'
 end
