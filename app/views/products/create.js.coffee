@@ -1,6 +1,7 @@
 row = $('.row').not('[id]').eq(1)
 row.attr('id', 'product-<%= @product.id %>')
 row.find('[data-method="delete"]').attr('href', '<%= product_path(@product) %>').removeClass('hide')
+row.find('[name="add_to_shopping_list"]').removeClass('hide')
 form = row.find('form')
 form.attr('action', '<%= product_path(@product) %>')
 form.attr('method', 'put')
@@ -13,6 +14,8 @@ if row.siblings('.row').not('[id]').length == 1
   $.each newRow.find('[data-source]'), ->
     initSelect2 $(this)
   newRow.removeAttr('id')
+  newRow.find('[data-method="delete"]').addClass('hide')
+  newRow.find('[name="add_to_shopping_list"]').addClass('hide')
   newForm = newRow.find('form')
   newForm.attr('action', '<%= products_path %>')
   newForm.attr('method', 'post')

@@ -13,6 +13,7 @@ if row.siblings('.row').not('[id]').length == 1
   $.each newRow.find('[data-source]'), ->
     initSelect2 $(this)
   newRow.removeAttr('id')
+  newRow.find('[data-method="delete"]').addClass('hide')
   newForm = newRow.find('form')
   newForm.attr('action', '<%= categories_path %>')
   newForm.attr('method', 'post')
