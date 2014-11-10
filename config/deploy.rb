@@ -35,7 +35,6 @@ set :linked_dirs, %w{log tmp public/assets assets_manifest_backup}
 # set :keep_releases, 5
 
 set :rvm_ruby_version, '2.1.3@eaters'
-set :rvm_custom_path, '/usr/local/rvm'
 
 namespace :deploy do
 
