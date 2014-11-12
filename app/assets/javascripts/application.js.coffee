@@ -20,4 +20,5 @@
 #= require jquery.validate
 #= require jquery.validate.additional-methods
 #= require jquery.validate.localization/messages_ru
+#= require bugsense
 #= require_tree .

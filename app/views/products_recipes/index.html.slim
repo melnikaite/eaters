@@ -1,4 +1,6 @@
-h1=@recipe.title
+h1
+  = @recipe.title
+  = last_updated(@products_recipes)
 
 .products_recipes
   .row.form-group.hidden-xs

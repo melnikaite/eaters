@@ -1,4 +1,6 @@
-h1=@shopping_list.title
+h1
+  = @shopping_list.title
+  = last_updated(@shopping_list_items)
 
 .row.form-group.hidden-xs
   .col-sm-1 Done

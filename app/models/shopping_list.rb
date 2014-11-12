@@ -6,6 +6,8 @@ class ShoppingList < ActiveRecord::Base
 
   before_save :set_integration_details
 
+  validates_presence_of :title, :user
+
   def set_integration_details
     self.integration_details = {} unless integration_details
   end

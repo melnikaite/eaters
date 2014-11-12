@@ -1,3 +1,8 @@
+$.get '/users', (data) ->
+  Bugsense.initAndStartSession({apiKey: 'd13093e2', userIdentifier: data.id})
+Bugsense.on 'crash', ->
+  $('h1 .badge').addClass('danger').text('Reload page to make sure everything is saved')
+
 @timeouts = {}
 
 @initSelect2 = (input) ->
@@ -44,6 +49,7 @@ $(document).on 'ready page:load', ->
         , 250
       else
         form.data('waiting-response', (new Date()).getTime())
+        $('h1 .badge').text('Saving...')
         form.submit()
 
   @validate = (form) ->

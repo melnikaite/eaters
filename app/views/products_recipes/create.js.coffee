@@ -6,6 +6,7 @@ form = row.find('form')
 form.attr('action', '<%= recipe_products_recipe_path(@products_recipe.recipe_id, @products_recipe.id) %>')
 form.attr('method', 'put')
 form.data('waiting-response', false)
+$('h1 .badge').replaceWith('<%= last_updated([@products_recipe]) %>')
 if row.siblings('.row').not('[id]').length == 1
   newRow = row.clone().appendTo(row.parent())
   newRow.find('.select2-container').remove()

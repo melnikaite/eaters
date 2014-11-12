@@ -3,6 +3,7 @@ class ShoppingListItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :unit
   before_create :update_existing
+  validates_presence_of :product, :shopping_list
 
   def title
     "#{product.title} #{required} #{unit.try(:title)}"

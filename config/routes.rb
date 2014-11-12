@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       delete :destroy
     end
   end
+  resources :users, only: :index
 
   root 'products#index'
 
