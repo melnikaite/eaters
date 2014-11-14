@@ -4,10 +4,6 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    unless current_user
-      redirect_to new_user_session_path
-      return
-    end
     @products = current_user.products
   end
 
