@@ -4,7 +4,7 @@ class ShoppingListItemsController < ApplicationController
 
   # GET /shopping_lists/1/shopping_list_items
   def index
-    @shopping_list_items = @shopping_list.shopping_list_items.where(shopping_list_id: @shopping_list.id)
+    @shopping_list_items = @shopping_list.shopping_list_items.where(shopping_list_id: @shopping_list.id).includes(:unit, :product).order("#{params[:order_by] || 'products.title'} #{params[:direction] || 'asc'}")
   end
 
   # POST /shopping_lists/1/shopping_list_items.json

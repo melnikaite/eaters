@@ -5,11 +5,21 @@ h1
 .products
   .row.form-group.hidden-xs
     .col-sm-1 &nbsp;
-    .col-sm-2 Title
-    .col-sm-2 Rest
-    .col-sm-2 Required
-    .col-sm-2 Unit
-    .col-sm-2 Category
+    .col-sm-2
+      ' Title
+      = order_by 'title'
+    .col-sm-2
+      ' Rest
+      = order_by 'rest'
+    .col-sm-2
+      ' Required
+      = order_by 'required'
+    .col-sm-2
+      ' Unit
+      = order_by 'units.title'
+    .col-sm-2
+      ' Category
+      = order_by 'categories.title'
     .col-sm-1 &nbsp;
 
   - @products.each do |product|

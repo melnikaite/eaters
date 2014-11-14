@@ -20,4 +20,8 @@ module ApplicationHelper
     time = collection.count > 0 ? 'Saved at ' + collection.map(&:updated_at).max.in_time_zone('Minsk').strftime('%Y-%m-%d %H:%M:%S') : ''
     content_tag(:span, time, class: 'badge')
   end
+
+  def order_by(field)
+    link_to '', "?order_by=#{field}&direction=#{params[:direction] == 'desc' ? 'asc' : 'desc'}", class: 'glyphicon glyphicon-sort'
+  end
 end

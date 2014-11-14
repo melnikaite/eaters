@@ -3,7 +3,9 @@ h1
   = last_updated(@categories)
 
 .row.form-group.hidden-xs
-  .col-sm-4 Title
+  .col-sm-4
+    ' Title
+    = order_by 'title'
   .col-sm-1 &nbsp;
 
 - @categories.each do |category|

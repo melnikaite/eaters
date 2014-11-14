@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    @recipes = current_user.recipes
+    @recipes = current_user.recipes.order("#{params[:order_by] || 'title'} #{params[:direction] || 'asc'}")
   end
 
   # POST /recipes.json

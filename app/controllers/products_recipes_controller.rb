@@ -4,7 +4,7 @@ class ProductsRecipesController < ApplicationController
 
   # GET /recipes/1/products
   def index
-    @products_recipes = current_user.products_recipes.where(recipe_id: @recipe.id)
+    @products_recipes = current_user.products_recipes.where(recipe_id: @recipe.id).includes(:unit, :product).order("#{params[:order_by] || 'products.title'} #{params[:direction] || 'asc'}")
   end
 
   # POST /recipes/1/products.json

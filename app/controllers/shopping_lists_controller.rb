@@ -4,7 +4,7 @@ class ShoppingListsController < ApplicationController
   # GET /shopping_lists
   # GET /shopping_lists.json
   def index
-    @shopping_lists = current_user.shopping_lists
+    @shopping_lists = current_user.shopping_lists.order("#{params[:order_by] || 'title'} #{params[:direction] || 'asc'}")
   end
 
   # POST /shopping_lists.json

@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories
   def index
-    @categories = current_user.categories
+    @categories = current_user.categories.order("#{params[:order_by] || 'title'} #{params[:direction] || 'asc'}")
   end
 
   # POST /categories.json

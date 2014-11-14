@@ -3,10 +3,18 @@ h1
   = last_updated(@shopping_list_items)
 
 .row.form-group.hidden-xs
-  .col-sm-1 Done
-  .col-sm-4 Title
-  .col-sm-2 Required
-  .col-sm-2 Unit
+  .col-sm-1
+    ' Done
+    = order_by 'done'
+  .col-sm-4
+    ' Title
+    = order_by 'products.title'
+  .col-sm-2
+    ' Required
+    = order_by 'required'
+  .col-sm-2
+    ' Unit
+    = order_by 'units.title'
   .col-sm-1 &nbsp;
 
 -@shopping_list_items.each do |shopping_list_item|

@@ -5,9 +5,15 @@ h1
 .products_recipes
   .row.form-group.hidden-xs
     .col-sm-1 &nbsp;
-    .col-sm-4 Title
-    .col-sm-1 Required
-    .col-sm-1 Unit
+    .col-sm-4
+      ' Title
+      = order_by 'products.title'
+    .col-sm-1
+      ' Required
+      = order_by 'required'
+    .col-sm-1
+      ' Unit
+      = order_by 'units.title'
     .col-sm-1 &nbsp;
 
   -@products_recipes.each do |products_recipe|
