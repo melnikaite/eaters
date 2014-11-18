@@ -2,6 +2,18 @@ h1
   | Listing products
   = last_updated(@products)
 
+.filters
+  .row.form-group
+    .col-sm-8 &nbsp;
+    .col-sm-1
+      ' Filter
+    .col-sm-2
+      form.autosubmit action="#{products_path}"
+        = text_field_tag :category_id, params[:category_id], data: {source: categories_path, value: @category ? {id: @category.id, text: @category.title} : nil}, id: '', placeholder: 'Category'
+    .col-sm-1 &nbsp;
+br
+br
+
 .products
   .row.form-group.hidden-xs
     .col-sm-1 &nbsp;

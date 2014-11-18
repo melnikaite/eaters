@@ -49,7 +49,7 @@ $(document).on 'ready page:load', ->
         , 250
       else
         form.data('waiting-response', (new Date()).getTime())
-        $('h1 .badge').text('Saving...')
+        $('h1 .badge').text('Processing...')
         form.submit()
 
   @validate = (form) ->

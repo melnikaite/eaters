@@ -4,7 +4,10 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = current_user.products.includes(:unit, :category).order("#{params[:order_by] || 'title'} #{params[:direction] || 'asc'}")
+    order = "#{params[:order_by] || 'title'} #{params[:direction] || 'asc'}"
+    @category = Category.find_by_id(params[:category_id])
+    where = @category ? {category_id: @category.id} : nil
+    @products = current_user.products.includes(:unit, :category).order(order).where(where)
   end
 
   # POST /products.json
