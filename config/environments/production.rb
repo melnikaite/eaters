@@ -60,7 +60,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = { :protocol => 'https', host: 'жраки.рф' }
+  config.action_mailer.default_url_options = { :protocol => 'https', host: 'zhraki.org' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => "smtp.mandrillapp.com",
@@ -68,7 +68,7 @@ Rails.application.configure do
     :enable_starttls_auto => true,
     :user_name            => 'melnikaite.melnikaite@gmail.com',
     :password             => 'vinUGXKg5LYrg76kmJ2M8A',
-    :domain               => 'eaters.com',
+    :domain               => 'eaters.org',
     :authentication       => 'plain'
   }
 

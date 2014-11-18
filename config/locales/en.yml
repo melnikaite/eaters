@@ -1,23 +1,51 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  title: 'Eaters'
+  menu:
+    profile: 'Profile'
+    sign_out: 'Sing out'
+    sign_in:
+      email: 'Sign in with email'
+      trello: 'Sign in with Trello'
+      facebook: 'Sign in with Facebook'
+      vkontakte: 'Sign in with Vkontakte'
+    sign_up: 'Sign up'
+  emails:
+    welcome:
+      subject: 'Welcome to Eaters'
+      body:
+        welcome: 'Welcome to Eaters, %{name}'
+        credentials: 'You have successfully signed up to Eaters, your username is: %{email}, your password is: %{password}.'
+        link: 'To login to the site, just follow this link: %{url}.'
+        thanks: 'Thanks for joining and have a great day!'
+  listings:
+    category: 'Categories'
+    integration: 'Integrations'
+    product: 'Products'
+    recipe: 'Recipes'
+    shopping_list: 'Shopping lists'
+  new:
+    integration: 'New integration'
+  saved_at: 'saved at '
+  processing: 'processing...'
+  filter: 'Filter'
+  fields:
+    title: 'Title'
+    provider: 'Provider'
+    rest: 'Rest'
+    required: 'Required'
+    unit: 'Unit'
+    category: 'Category'
+    done: 'Done'
+    shopping_list: 'Shopping list'
+    integration: 'Integration'
+  actions:
+    remove: 'Destroy'
+    back: 'Back'
+    add_selected_to: 'Add selected to'
+    save: 'Save'
+    select_board: 'Select board'
+    select_list: 'Select list'
+    are_you_sure: 'Are you sure?'
+    open: 'Open'
+    export_to: 'Export to'
+    remove_from: 'Remove from'

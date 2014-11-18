@@ -1,0 +1,51 @@
+ru:
+  title: 'Жраки'
+  menu:
+    profile: 'Профайл'
+    sign_out: 'Выход'
+    sign_in:
+      email: 'Войти по email'
+      trello: 'Войти через Trello'
+      facebook: 'Войти через Facebook'
+      vkontakte: 'Войти через Вконтакте'
+    sign_up: 'Регистрация'
+  emails:
+    welcome:
+      subject: 'Добро пожаловать в Жраки'
+      body:
+        welcome: 'Добро пожаловать в Жраки, %{name}'
+        credentials: 'Вы успешно зарегистрировались в Жраках, Ваш логин: %{email}, Ваш пароль: %{password}.'
+        link: 'Что бы залогиниться на сайте, просто посетите эту ссылку: %{url}.'
+        thanks: 'Спасибо, что присоединились к нам и хорошего дня!'
+  listings:
+    category: 'Категории'
+    integration: 'Интеграции'
+    product: 'Продукты'
+    recipe: 'Рецепты'
+    shopping_list: 'Списки покупок'
+  new:
+    integration: 'Новая интеграция'
+  saved_at: 'сохранено в '
+  processing: 'обработка...'
+  filter: 'Фильтр'
+  fields:
+    title: 'Название'
+    provider: 'Провайдер'
+    rest: 'Остаток'
+    required: 'Требуется'
+    unit: 'Ед. изм.'
+    category: 'Категория'
+    done: 'Готово'
+    shopping_list: 'Список покупок'
+    integration: 'Интеграция'
+  actions:
+    remove: 'Удалить'
+    back: 'Назад'
+    add_selected_to: 'Добавить выбранное в'
+    save: 'Сохранить'
+    select_board: 'Выберите доску'
+    select_list: 'Выберите список'
+    are_you_sure: 'Вы уверены?'
+    open: 'Открыть'
+    export_to: 'Экспортировать в'
+    remove_from: 'Удалить из'

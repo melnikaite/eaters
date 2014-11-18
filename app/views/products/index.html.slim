@@ -1,15 +1,14 @@
 h1
-  | Listing products
+  = t('listings.product')
   = last_updated(@products)
 
 .filters
   .row.form-group
     .col-sm-8 &nbsp;
-    .col-sm-1
-      ' Filter
+    .col-sm-1 = t('filter')
     .col-sm-2
       form.autosubmit action="#{products_path}"
-        = text_field_tag :category_id, params[:category_id], data: {source: categories_path, value: @category ? {id: @category.id, text: @category.title} : nil}, id: '', placeholder: 'Category'
+        = text_field_tag :category_id, params[:category_id], data: {source: categories_path, value: @category ? {id: @category.id, text: @category.title} : nil}, id: '', placeholder: t('fields.category')
     .col-sm-1 &nbsp;
 br
 br
@@ -18,19 +17,19 @@ br
   .row.form-group.hidden-xs
     .col-sm-1 &nbsp;
     .col-sm-2
-      ' Title
+      = t('fields.title')
       = order_by 'title'
     .col-sm-2
-      ' Rest
+      = t('fields.rest')
       = order_by 'rest'
     .col-sm-2
-      ' Required
+      = t('fields.required')
       = order_by 'required'
     .col-sm-2
-      ' Unit
+      = t('fields.unit')
       = order_by 'units.title'
     .col-sm-2
-      ' Category
+      = t('fields.category')
       = order_by 'categories.title'
     .col-sm-1 &nbsp;
 
@@ -38,11 +37,11 @@ br
     .row id=("product-#{product.id}")
       = form_for product, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
         .col-sm-1= check_box_tag :add_to_shopping_list, product.id, false, {class: 'checkbox-inline', id: ''}
-        .col-sm-2.form-group= f.text_field :title, required: true, class: 'form-control', id: '', placeholder: 'Title'
+        .col-sm-2.form-group= f.text_field :title, required: true, class: 'form-control', id: '', placeholder: t('fields.title')
         .col-sm-2.form-group= f.text_field :rest, number: true, class: 'form-control', id: '', placeholder: '0.0'
         .col-sm-2.form-group= f.text_field :required, number: true, class: 'form-control', id: '', placeholder: '0.0'
-        .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path, value: product.unit ? {id: product.unit.id, text: product.unit.title} : nil}, id: '', placeholder: 'Unit'
-        .col-sm-2.form-group= f.text_field :category_id, data: {source: categories_path, value: product.category ? {id: product.category.id, text: product.category.title} : nil}, id: '', placeholder: 'Category'
+        .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path, value: product.unit ? {id: product.unit.id, text: product.unit.title} : nil}, id: '', placeholder: t('fields.unit')
+        .col-sm-2.form-group= f.text_field :category_id, data: {source: categories_path, value: product.category ? {id: product.category.id, text: product.category.title} : nil}, id: '', placeholder: t('fields.category')
         .col-sm-1= link_to product, method: :delete, remote: true do
           span.glyphicon.glyphicon-remove
           .visible-xs-inline Remove
@@ -50,11 +49,11 @@ br
   .row
     = form_for Product.new, remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
       .col-sm-1= check_box_tag :add_to_shopping_list, nil, false, {class: 'checkbox-inline hide', id: ''}
-      .col-sm-2.form-group= f.text_field :title, required: true, class: 'form-control', id: '', placeholder: 'Title'
+      .col-sm-2.form-group= f.text_field :title, required: true, class: 'form-control', id: '', placeholder: t('fields.title')
       .col-sm-2.form-group= f.text_field :rest, number: true, class: 'form-control', id: '', placeholder: '0.0'
       .col-sm-2.form-group= f.text_field :required, number: true, class: 'form-control', id: '', placeholder: '0.0'
-      .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path}, id: '', placeholder: 'Unit'
-      .col-sm-2.form-group= f.text_field :category_id, data: {source: categories_path}, id: '', placeholder: 'Category'
+      .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path}, id: '', placeholder: t('fields.unit')
+      .col-sm-2.form-group= f.text_field :category_id, data: {source: categories_path}, id: '', placeholder: t('fields.category')
       .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
         span.glyphicon.glyphicon-remove
         .visible-xs-inline Remove
@@ -62,5 +61,5 @@ br
 .row
   .col-sm-2
     = form_tag '/', method: :post
-      | Add selected to
-      = text_field_tag :shopping_list_id, nil, data: {source: shopping_lists_path}, id: '', placeholder: 'Shopping list'
+      = t('actions.add_selected_to')
+      = text_field_tag :shopping_list_id, nil, data: {source: shopping_lists_path}, id: '', placeholder: t('fields.shopping_list')

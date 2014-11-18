@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def last_updated(collection)
-    time = collection.count > 0 ? 'Saved at ' + collection.map(&:updated_at).max.in_time_zone('Minsk').strftime('%Y-%m-%d %H:%M:%S') : ''
+    time = collection.count > 0 ? t('saved_at') + collection.map(&:updated_at).max.in_time_zone('Minsk').strftime('%Y-%m-%d %H:%M:%S') : ''
     content_tag(:span, time, class: 'badge')
   end
 

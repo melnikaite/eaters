@@ -38,6 +38,8 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 gem 'ruby-trello', require: 'trello'
 gem 'omniauth-trello'

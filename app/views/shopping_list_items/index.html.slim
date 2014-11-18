@@ -4,16 +4,16 @@ h1
 
 .row.form-group.hidden-xs
   .col-sm-1
-    ' Done
+    = t('fields.done')
     = order_by 'done'
   .col-sm-4
-    ' Title
+    = t('fields.title')
     = order_by 'products.title'
   .col-sm-2
-    ' Required
+    = t('fields.required')
     = order_by 'required'
   .col-sm-2
-    ' Unit
+    = t('fields.unit')
     = order_by 'units.title'
   .col-sm-1 &nbsp;
 
@@ -26,7 +26,7 @@ h1
       .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path, value: shopping_list_item.unit ? {id: shopping_list_item.unit.id, text: shopping_list_item.unit.title} : nil}, id: ''
       .col-sm-1= link_to shopping_list_shopping_list_item_path(shopping_list_item.shopping_list_id, shopping_list_item.id), method: :delete, remote: true do
         span.glyphicon.glyphicon-remove
-        .visible-xs-inline Remove
+        .visible-xs-inline = t('actions.remove')
 
 .row
   = form_for :shopping_list_item, url: shopping_list_shopping_list_items_path(@shopping_list.id), remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
@@ -36,17 +36,17 @@ h1
     .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path}, id: ''
     .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
       span.glyphicon.glyphicon-remove
-      .visible-xs-inline Remove
+      .visible-xs-inline = t('actions.remove')
 
 .row
   .col-sm-2
     = form_tag exports_path, method: :delete, class: 'autosubmit'
-      | Remove from
+      = t('actions.remove_from')
       = hidden_field_tag :shopping_list_id, @shopping_list.id
-      = text_field_tag :integration_id, nil, required: true, data: {source: exports_path(shopping_list_id: @shopping_list.id)}, id: '', placeholder: 'Integrations'
+      = text_field_tag :integration_id, nil, required: true, data: {source: exports_path(shopping_list_id: @shopping_list.id)}, id: '', placeholder: t('fields.integration')
 
   .col-sm-2
     = form_tag exports_path, method: :post, class: 'autosubmit'
-      | Export to
+      = t('actions.export_to')
       = hidden_field_tag :shopping_list_id, @shopping_list.id
-      = text_field_tag :integration_id, nil, required: true, data: {source: integrations_path}, id: '', placeholder: 'Integrations'
+      = text_field_tag :integration_id, nil, required: true, data: {source: integrations_path}, id: '', placeholder: t('fields.integration')

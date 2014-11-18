@@ -1,8 +1,8 @@
-h1 Listing integrations
+h1 = t('listings.integration')
 table.table
   thead
     tr
-      th Provider
+      th = t('fields.provider')
       th
   tbody
     - @integrations.each do |integration|
@@ -10,6 +10,6 @@ table.table
         td
           = integration.provider
         td
-          = link_to 'Destroy', integration_path(integration), method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to t('actions.remove'), integration_path(integration), method: :delete, data: { confirm: t('actions.are_you_sure') }
 br
-= link_to 'New integration', new_integration_path
+= link_to t('new.integration'), new_integration_path

@@ -1,10 +1,10 @@
 h1
-  | Listing categories
+  = t('listings.category')
   = last_updated(@categories)
 
 .row.form-group.hidden-xs
   .col-sm-4
-    ' Title
+    = t('fields.title')
     = order_by 'title'
   .col-sm-1 &nbsp;
 

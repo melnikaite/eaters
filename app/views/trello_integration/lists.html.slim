@@ -1,4 +1,4 @@
-| Please select a list: 
+= t('actions.select_list')
 = form_tag trello_integration_index_path do
   = select_tag :list_id, options_from_collection_for_select(@lists, :id, :name)
-  = submit_tag 'Save'
+  = submit_tag t('actions.save')

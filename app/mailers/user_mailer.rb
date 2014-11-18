@@ -1,10 +1,10 @@
 class UserMailer < ActionMailer::Base
-  default from: "info@eaters.com"
+  default from: 'admin@eaters.org'
 
   def welcome_email(user, password)
     @user = user
     @password  = password
-    @url = 'жраки.рф'
-    mail(to: @user.email, subject: 'Welcome to жраки.рф')
+    @url = 'https://www.zhraki.org'
+    mail(to: @user.email, subject: I18n.t('emails.welcome.subject'))
   end
 end

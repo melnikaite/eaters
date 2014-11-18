@@ -6,13 +6,13 @@ h1
   .row.form-group.hidden-xs
     .col-sm-1 &nbsp;
     .col-sm-4
-      ' Title
+      = t('fields.title')
       = order_by 'products.title'
     .col-sm-1
-      ' Required
+      = t('fields.required')
       = order_by 'required'
     .col-sm-1
-      ' Unit
+      = t('fields.unit')
       = order_by 'units.title'
     .col-sm-1 &nbsp;
 
@@ -40,5 +40,5 @@ h1
 .row
   .col-sm-2
     = form_tag '/', method: :post
-      | Add selected to
-      = text_field_tag :shopping_list_id, nil, data: {source: shopping_lists_path}, id: '', placeholder: 'Shopping list'
+      = t('actions.add_selected_to')
+      = text_field_tag :shopping_list_id, nil, data: {source: shopping_lists_path}, id: '', placeholder: t('fields.shopping_list')
