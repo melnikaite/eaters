@@ -1,3 +1,5 @@
 form = $('#shopping_list_item-<%= @shopping_list_item.id %> form')
 form.data('waiting-response', false)
 $('h1 .badge').replaceWith('<%= last_updated([@shopping_list_item]) %>')
+form.find('[name="shopping_list_item[unit_price]"]').not(':focus').val('<%= @shopping_list_item.unit_price %>')
+form.find('[name="shopping_list_item[total_price]"]').not(':focus').val('<%= @shopping_list_item.total_price %>')

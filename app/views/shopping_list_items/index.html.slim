@@ -6,7 +6,7 @@ h1
   .col-sm-1
     = t('fields.done')
     = order_by 'done'
-  .col-sm-4
+  .col-sm-2
     = t('fields.title')
     = order_by 'products.title'
   .col-sm-2
@@ -15,15 +15,23 @@ h1
   .col-sm-2
     = t('fields.unit')
     = order_by 'units.title'
+  .col-sm-2
+    = t('fields.unit_price')
+    = order_by 'unit_price'
+  .col-sm-2
+    = t('fields.total_price')
+    = order_by 'total_price'
   .col-sm-1 &nbsp;
 
 -@shopping_list_items.each do |shopping_list_item|
   .row id=("shopping_list_item-#{shopping_list_item.id}")
     = form_for shopping_list_item, url: shopping_list_shopping_list_item_path(@shopping_list.id, shopping_list_item.id), remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
       .col-sm-1.form-group= f.check_box :done, id: ''
-      .col-sm-4.form-group= f.text_field :product_id, required: true, data: {source: products_path, value: shopping_list_item.product ? {id: shopping_list_item.product.id, text: shopping_list_item.product.title} : nil}, id: ''
+      .col-sm-2.form-group= f.text_field :product_id, required: true, data: {source: products_path, value: shopping_list_item.product ? {id: shopping_list_item.product.id, text: shopping_list_item.product.title} : nil}, id: ''
       .col-sm-2.form-group= f.text_field :required, number: true, class: 'form-control', id: ''
       .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path, value: shopping_list_item.unit ? {id: shopping_list_item.unit.id, text: shopping_list_item.unit.title} : nil}, id: ''
+      .col-sm-2.form-group= f.text_field :unit_price, number: true, class: 'form-control', id: ''
+      .col-sm-2.form-group= f.text_field :total_price, number: true, class: 'form-control', id: ''
       .col-sm-1= link_to shopping_list_shopping_list_item_path(shopping_list_item.shopping_list_id, shopping_list_item.id), method: :delete, remote: true do
         span.glyphicon.glyphicon-remove
         .visible-xs-inline = t('actions.remove')
@@ -31,9 +39,11 @@ h1
 .row
   = form_for :shopping_list_item, url: shopping_list_shopping_list_items_path(@shopping_list.id), remote: true, html: {autocomplete: :off, class: 'autosubmit'} do |f|
     .col-sm-1.form-group= f.check_box :done, id: ''
-    .col-sm-4.form-group= f.text_field :product_id, required: true, data: {source: products_path}, id: ''
+    .col-sm-2.form-group= f.text_field :product_id, required: true, data: {source: products_path}, id: ''
     .col-sm-2.form-group= f.text_field :required, number: true, class: 'form-control', id: ''
     .col-sm-2.form-group= f.text_field :unit_id, data: {source: units_path}, id: ''
+    .col-sm-2.form-group= f.text_field :unit_price, number: true, class: 'form-control', id: ''
+    .col-sm-2.form-group= f.text_field :total_price, number: true, class: 'form-control', id: ''
     .col-sm-1= link_to '#', method: :delete, remote: true, class: 'hide' do
       span.glyphicon.glyphicon-remove
       .visible-xs-inline = t('actions.remove')

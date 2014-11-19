@@ -27,6 +27,7 @@ ru:
     integration: 'Новая интеграция'
   saved_at: 'сохранено в '
   processing: 'обработка...'
+  reload_page: 'Произошла ошибка. Обновите страницу, что бы убедиться, что все данные сохранены!'
   filter: 'Фильтр'
   fields:
     title: 'Название'
@@ -38,6 +39,8 @@ ru:
     done: 'Готово'
     shopping_list: 'Список покупок'
     integration: 'Интеграция'
+    unit_price: 'Цена за ед.'
+    total_price: 'Цена'
   actions:
     remove: 'Удалить'
     back: 'Назад'

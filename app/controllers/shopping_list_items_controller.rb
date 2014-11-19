@@ -39,6 +39,6 @@ class ShoppingListItemsController < ApplicationController
     def shopping_list_params
       items = params.require(:shopping_list_item)
       items = items.values if items.keys.first == '0'
-      ActionController::Parameters.new(shopping_list_item: items).permit(shopping_list_item: [:product_id, :required, :unit_id, :done]).require(:shopping_list_item)
+      ActionController::Parameters.new(shopping_list_item: items).permit(shopping_list_item: [:product_id, :required, :unit_id, :done, :unit_price, :total_price]).require(:shopping_list_item)
     end
 end

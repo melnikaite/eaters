@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028180659) do
+ActiveRecord::Schema.define(version: 20141119143307) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -71,9 +71,11 @@ ActiveRecord::Schema.define(version: 20141028180659) do
     t.integer  "product_id"
     t.integer  "unit_id"
     t.integer  "required"
-    t.boolean  "done",             default: false
+    t.boolean  "done",                        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "unit_price",       limit: 24
+    t.float    "total_price",      limit: 24
   end
 
   create_table "shopping_lists", force: true do |t|

@@ -1,7 +1,19 @@
 $.get '/users', (data) ->
   Bugsense.initAndStartSession({apiKey: 'd13093e2', userIdentifier: data.id})
+
 Bugsense.on 'crash', ->
-  $('h1 .badge').addClass('danger').text('Reload page to make sure everything is saved')
+  $.jGrowl '<%= I18n.t('reload_page') %>', { sticky: true, group: 'error' }
+  Bugsense.addExtraData 'page', window.location.href
+
+$(document).ajaxError (event, xhr, settings, error) ->
+  $.jGrowl '<%= I18n.t('reload_page') %>', { sticky: true, group: 'error' }
+  Bugsense.addExtraData 'page', window.location.href
+  Bugsense.addExtraData 'ajax_url', settings.url
+  Bugsense.addExtraData 'ajax_type', settings.type
+  Bugsense.notify
+    request: xhr
+    settings: settings
+    error: error
 
 @timeouts = {}
 
@@ -31,8 +43,13 @@ Bugsense.on 'crash', ->
   $('[name="shopping_list_id"]').select2('enable', has_checked_items)
 
 $(document).on 'ready page:load', ->
-  $(document).off 'keyup change', 'input'
-  $(document).on 'keyup change', 'input', (e) ->
+  $(document).off 'keyup', 'input'
+  $(document).on 'keyup', 'input', (e) ->
+    form = $(this).closest('form')
+    handleSubmit(form) if form.hasClass('autosubmit')
+
+  $(document).off 'change', 'input[data-source]'
+  $(document).on 'change', 'input[data-source]', (e) ->
     form = $(this).closest('form')
     handleSubmit(form) if form.hasClass('autosubmit')
 

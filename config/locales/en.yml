@@ -27,6 +27,7 @@ en:
     integration: 'New integration'
   saved_at: 'saved at '
   processing: 'processing...'
+  reload_page: 'An error has occurred. Reload the page to make sure everything is saved!'
   filter: 'Filter'
   fields:
     title: 'Title'
@@ -38,6 +39,8 @@ en:
     done: 'Done'
     shopping_list: 'Shopping list'
     integration: 'Integration'
+    unit_price: 'Price for unit'
+    total_price: 'Price'
   actions:
     remove: 'Destroy'
     back: 'Back'
