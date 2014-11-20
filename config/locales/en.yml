@@ -29,6 +29,7 @@ en:
   processing: 'processing...'
   reload_page: 'An error has occurred. Reload the page to make sure everything is saved!'
   filter: 'Filter'
+  total: 'Total'
   fields:
     title: 'Title'
     provider: 'Provider'

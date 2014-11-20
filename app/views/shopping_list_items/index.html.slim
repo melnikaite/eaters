@@ -49,6 +49,12 @@ h1
       .visible-xs-inline = t('actions.remove')
 
 .row
+  .col-sm-8 &nbsp;
+  .col-sm-1 = t('total')
+  .col-sm-2.total = @total
+  .col-sm-1 &nbsp;
+
+.row
   .col-sm-2
     = form_tag exports_path, method: :delete, class: 'autosubmit'
       = t('actions.remove_from')

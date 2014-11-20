@@ -12,6 +12,7 @@ form = row.find('form')
 form.attr('action', '<%= shopping_list_shopping_list_item_path(@shopping_list_item.shopping_list_id, @shopping_list_item.id) %>')
 form.attr('method', 'put')
 form.data('waiting-response', false)
+$('.total').text('<%= @total %>')
 $('h1 .badge').replaceWith('<%= last_updated([@shopping_list_item]) %>')
 if row.siblings('.row').not('[id]').length == 2
   newRow = row.clone().insertAfter(row)
