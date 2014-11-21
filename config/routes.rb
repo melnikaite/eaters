@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       delete :destroy
     end
   end
+  match '/exports/callback' => 'exports#callback', via: [:get, :post]
   resources :users, only: :index
 
   root 'products#index'

@@ -1,4 +1,6 @@
 class ExportsController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:callback]
+  skip_before_filter :verify_authenticity_token, :only => [:callback]
   before_action :set_shopping_list, only: [:index, :create, :destroy]
   before_action :set_integration, only: [:create, :destroy]
 
@@ -11,6 +13,16 @@ class ExportsController < ApplicationController
   def create
     @shopping_list.save_in(@integration)
     redirect_to :back
+  end
+
+  # POST /exports/callback.json
+  def callback
+    if params[:shopping_list_id] && params[:integration_id]
+      @shopping_list = ShoppingList.find(params[:shopping_list_id])
+      @integration = Integration.find(params[:integration_id])
+    end
+    @shopping_list.external_update(@integration, params)
+    render nothing: true
   end
 
   # DELETE /exports.json

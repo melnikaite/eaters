@@ -29,11 +29,23 @@ class ShoppingList < ActiveRecord::Base
           shopping_list_items.each do |item|
             checklist.add_item(item.title, item.done || false)
           end
+          trello_integration.client.create(:webhook, 'idModel' => checklist_id, 'callbackURL' => "https://www.zhraki.org/exports/callback.json?integration_id=#{integration.id}&shopping_list_id=#{id}")
           integration_details['trello'] = {card_id: card.id, checklist_id: checklist.id}
         rescue Trello::Error
         end
     end
     self.save
+  end
+
+  def external_update(integration, params)
+    case integration.provider
+      when 'trello'
+        begin
+          logger.info params.inspect
+          puts params.inspect
+        rescue Trello::Error
+        end
+    end
   end
 
   def remove_from(integration)
