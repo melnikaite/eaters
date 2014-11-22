@@ -1,4 +1,4 @@
-row = $('.row').not('[id]').eq(1)
+row = $('.row').not('[id]').eq(2)
 row.attr('id', 'product-<%= @product.id %>')
 row.find('[data-method="delete"]').attr('href', '<%= product_path(@product) %>').removeClass('hide')
 row.find('[name="add_to_shopping_list"]').removeClass('hide')
