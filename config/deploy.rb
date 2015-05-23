@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:melnikaite/eaters.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/home/deploy/eaters'
+set :deploy_to, '/root/eaters'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -35,6 +35,7 @@ set :linked_dirs, %w{log tmp public/assets assets_manifest_backup}
 # set :keep_releases, 5
 
 set :rvm_ruby_version, '2.1.3@eaters'
+set :rvm_type, :system
 
 namespace :deploy do
 
